@@ -81,7 +81,8 @@ class Cat_Model:
         
         #open the pickle file and update the model's parameters
         #// Deserialize a model
-        with open('/Users/guillaumedelande/Documents/AIGroupWork/91931144/cat_model.pkl', mode='rb') as f:
+        #For me: file_path='/Users/guillaumedelande/Documents/AIGroupWork/91931144/cat_model.pkl'
+        with open(file_path, mode='rb') as f:
             a=pickle.load(f)
         
         self._dim = a._dim
