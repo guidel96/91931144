@@ -47,7 +47,7 @@ class Cat_Model:
     def __init__(self, dimension, weights=None, bias=None, activation=(lambda x: x)):
         self._dim = dimension
         self.w = weights or np.random.normal(size=self._dim)
-        self.w = np.array(self.w)
+        self.w = np.array(self.w)*np.sqrt(1/dimension)
         self.b = bias if bias is not None else np.random.normal()
         self._a = activation
         #self.predict = predict.__get__(self)
@@ -235,11 +235,11 @@ def main():
     model = Cat_Model(dimension=(64*64*3), weights=None, bias=None, activation=sigmoid)  # specify the necessary arguments    
 
     trainer = Cat_Trainer(data, model)
-    trainer.train(lr=0.01, ne=500) # experiment with learning rate and number of epochs
+    trainer.train(lr=0.01, ne=100) # experiment with learning rate and number of epochs
     #As defined earlier: train(lr, ne) where lr is the learning rate and ne the number of epochs (for the gradient), tweak those values
     model.save_model()
     #print(data[0][0])
-
+ 
 if __name__ == '__main__':
 
     main()
